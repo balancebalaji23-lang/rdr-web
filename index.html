@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RDR Construction | Civil & Govt Contractors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #102a43;
+    --navy-2: #243b53;
+    --orange: #f28c28;
+    --orange-dark: #d97706;
+    --grey: #627d98;
+    --line: #d9e2ec;
+    --soft: #f5f7fa;
+    --white: #ffffff;
+    --green: #2f855a;
+    --radius: 8px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    color: var(--navy);
+    background: var(--white);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+  .section { position: relative; padding: 80px 0; border-bottom: 1px solid var(--line); overflow: hidden; }
+  .grid-bg::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .6;
+    background-image:
+      linear-gradient(90deg, rgba(16,42,67,.04) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(16,42,67,.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase;
+    color: var(--orange-dark); margin-bottom: 16px;
+  }
+  .h2 { font-size: 40px; font-weight: 800; letter-spacing: -.8px; line-height: 1.15; margin-bottom: 16px; }
+  .lead { font-size: 18px; color: var(--grey); max-width: 720px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px;
+    border-radius: 6px; font-weight: 700; font-size: 16px; border: 1px solid transparent;
+    cursor: pointer; transition: transform .15s, box-shadow .15s, background .15s;
+    font-family: inherit;
+  }
+  .btn-primary { background: var(--orange); color: #fff; box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1); }
+  .btn-primary:hover { background: var(--orange-dark); transform: translateY(-1px); }
+  .btn-outline { background: #fff; color: var(--navy); border-color: var(--line); }
+  .btn-outline:hover { border-color: var(--navy); }
+  .btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+  .ph {
+    background: linear-gradient(135deg, #bcccdc 0%, #829ab1 55%, #486581 100%);
+    position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,.85); font-size: 13px; text-align: center; padding: 16px;
+  }
+  .ph span { background: rgba(16,42,67,.55); padding: 6px 10px; border-radius: 4px; }
+
+  /* Header */
+  header.site {
+    position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.96);
+    backdrop-filter: blur(6px); border-bottom: 1px solid var(--line);
+  }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 80px; gap: 24px; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .logo {
+    width: 48px; height: 48px; border-radius: 6px; background: var(--navy);
+    color: var(--orange); font-weight: 800; display: grid; place-items: center; font-size: 18px;
+  }
+  .brand-name { font-weight: 800; font-size: 18px; line-height: 1.1; }
+  .brand-sub { font-size: 11px; letter-spacing: 1.2px; color: var(--grey); font-weight: 600; text-transform: uppercase; }
+  nav.main { display: flex; gap: 6px; }
+  nav.main a { padding: 6px 12px; font-size: 14px; font-weight: 600; color: var(--navy-2); border-bottom: 2px solid transparent; }
+  nav.main a:hover { border-bottom-color: var(--orange); }
+  nav.main a.active { border-bottom-color: var(--orange); }
+  .menu-toggle { display: none; background: none; border: 0; font-size: 26px; cursor: pointer; color: var(--navy); }
+
+  /* Hero */
+  .hero { padding: 64px 0 80px; }
+  .hero .wrap { display: grid; grid-template-columns: repeat(12, 1fr); gap: 32px; align-items: center; }
+  .hero-copy { grid-column: 1 / span 7; display: flex; flex-direction: column; gap: 32px; }
+  .badge {
+    align-self: flex-start; background: var(--soft); border: 1px solid var(--line); border-radius: 12px;
+    padding: 7px 15px; font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+  }
+  .hero h1 { font-size: 60px; line-height: 1.05; font-weight: 800; letter-spacing: -1.5px; }
+  .hero p.sub { font-size: 20px; color: var(--grey); line-height: 1.4; max-width: 672px; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; padding-top: 8px; }
+  .trust {
+    border-top: 1px solid rgba(217,226,236,.8); padding-top: 17px; display: flex; gap: 12px; align-items: center;
+    font-size: 14px; font-weight: 700; color: var(--grey);
+  }
+  .hero-visual { grid-column: 8 / span 5; position: relative; }
+  .hero-frame {
+    background: var(--navy); border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,.25); position: relative; height: 540px;
+  }
+  .hero-frame .ph { position: absolute; inset: 0; }
+  .hero-badge {
+    position: absolute; left: 16px; right: 16px; bottom: 16px; background: rgba(16,42,67,.9);
+    border: 1px solid rgba(255,255,255,.1); border-radius: 4px; padding: 17px;
+    display: flex; justify-content: space-between; align-items: center; gap: 12px; backdrop-filter: blur(6px);
+  }
+  .hero-badge .k { font-size: 11px; font-weight: 700; color: var(--orange); letter-spacing: .6px; text-transform: uppercase; }
+  .hero-badge .v { font-size: 14px; font-weight: 700; color: #fff; }
+  .hero-badge .loc { font-size: 12px; color: #cbd5e1; background: rgba(255,255,255,.1); padding: 4px 10px; border-radius: 2px; white-space: nowrap; }
+  .accent-tr { position: absolute; top: -16px; right: -16px; width: 96px; height: 96px; border-top: 2px solid var(--orange); border-right: 2px solid var(--orange); }
+  .accent-bl { position: absolute; bottom: -16px; left: -16px; width: 96px; height: 96px; border-bottom: 2px solid var(--navy); border-left: 2px solid var(--navy); }
+
+  /* Stats */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; }
+  .stat {
+    background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 32px 24px; text-align: center;
+    box-shadow: 0 1px 2px rgba(16,42,67,.04);
+  }
+  .stat .ico {
+    width: 40px; height: 40px; margin: 0 auto 16px; border-radius: 8px; background: var(--soft);
+    display: grid; place-items: center; color: var(--orange-dark); font-weight: 800;
+  }
+  .stat .num { font-size: 40px; font-weight: 800; letter-spacing: -1px; }
+  .stat .bar { width: 32px; height: 4px; background: var(--orange); margin: 14px auto; border-radius: 2px; }
+  .stat .lbl { font-size: 14px; color: var(--grey); font-weight: 600; }
+
+  /* Services */
+  .head-block { max-width: 768px; margin-bottom: 48px; }
+  .cards5 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; position: relative; }
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 32px;
+    display: flex; flex-direction: column; gap: 16px; transition: box-shadow .2s, transform .2s;
+  }
+  .card:hover { box-shadow: 0 12px 24px -8px rgba(16,42,67,.15); transform: translateY(-2px); }
+  .card .ico-sq {
+    width: 48px; height: 48px; border-radius: 8px; background: var(--soft); border: 1px solid var(--line);
+    display: grid; place-items: center; color: var(--navy); font-weight: 800;
+  }
+  .card h3 { font-size: 22px; font-weight: 700; letter-spacing: -.3px; }
+  .card p { color: var(--grey); font-size: 15px; flex: 1; }
+  .card .more {
+    border-top: 1px solid var(--line); padding-top: 16px; font-size: 14px; font-weight: 700; color: var(--navy);
+  }
+  .card .more::after { content: " →"; color: var(--orange); }
+
+  /* Leadership */
+  .leader { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; align-items: center; }
+  .leader .photo { height: 482px; border-radius: 8px; border: 1px solid var(--line); overflow: hidden; position: relative; box-shadow: 0 25px 50px -12px rgba(0,0,0,.2); }
+  .leader .photo .ph { position: absolute; inset: 0; }
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0; }
+  .pillar { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 17px; }
+  .pillar .t { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+  .pillar .t i { width: 28px; height: 28px; border-radius: 6px; background: var(--soft); display: grid; place-items: center; font-style: normal; font-size: 13px; color: var(--orange-dark); font-weight: 800; }
+  .pillar p { font-size: 14px; color: var(--grey); }
+  .quote {
+    background: var(--soft); border-left: 3px solid var(--orange); border-radius: 6px; padding: 24px;
+    font-size: 17px; font-style: italic; color: var(--navy-2);
+  }
+  .quote .sig { margin-top: 12px; font-style: normal; font-size: 13px; color: var(--grey); font-weight: 600; letter-spacing: .4px; }
+
+  /* Projects */
+  .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .project { background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+  .project .thumb { height: 288px; position: relative; }
+  .project .thumb .ph { position: absolute; inset: 0; }
+  .project .tag {
+    position: absolute; left: 16px; top: 17px; z-index: 2; background: rgba(16,42,67,.9); color: #fff;
+    font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 3px; letter-spacing: .3px;
+  }
+  .project .body { padding: 24px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .project .cat { font-size: 12px; font-weight: 700; color: var(--orange-dark); text-transform: uppercase; letter-spacing: 1px; }
+  .project h3 { font-size: 22px; font-weight: 700; }
+  .project p { font-size: 15px; color: var(--grey); flex: 1; }
+  .project .link { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 16px; font-size: 14px; font-weight: 700; display: flex; justify-content: space-between; }
+  .project .link span { color: var(--orange-dark); }
+
+  /* Credentials */
+  .creds { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 8px; }
+  .cred { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+  .cred .top { display: flex; justify-content: space-between; align-items: center; }
+  .cred .ico-sq { width: 40px; height: 40px; border-radius: 8px; background: var(--soft); display: grid; place-items: center; font-weight: 800; color: var(--navy); }
+  .cred .pill { font-size: 11px; font-weight: 700; background: var(--soft); border: 1px solid var(--line); border-radius: 3px; padding: 4px 9px; color: var(--grey); text-transform: uppercase; letter-spacing: .5px; }
+  .cred h3 { font-size: 18px; font-weight: 700; }
+  .cred p { font-size: 14px; color: var(--grey); flex: 1; }
+  .cred dl { background: var(--soft); border: 1px solid var(--line); border-radius: 6px; padding: 12px; font-size: 13px; display: grid; gap: 8px; }
+  .cred dl div { display: flex; justify-content: space-between; gap: 8px; }
+  .cred dt { color: var(--grey); font-weight: 600; }
+  .cred dd { font-weight: 700; text-align: right; }
+  .note { margin-top: 32px; display: flex; gap: 12px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; font-size: 14px; color: var(--grey); }
+  .note strong { color: var(--navy); }
+
+  /* Testimonials */
+  .testi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .t-card { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 33px; display: flex; flex-direction: column; gap: 20px; }
+  .t-card .thumb { height: 178px; border-radius: 6px; overflow: hidden; position: relative; }
+  .t-card .thumb .ph { position: absolute; inset: 0; }
+  .t-card .thumb .cap {
+    position: absolute; left: 9px; bottom: 9px; z-index: 2; background: rgba(16,42,67,.9); color: #fff;
+    font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 3px;
+  }
+  .t-card blockquote { font-size: 16px; color: var(--navy-2); line-height: 1.6; flex: 1; }
+  .t-card .meta { border-top: 1px solid var(--line); padding-top: 16px; }
+  .t-card .meta b { display: block; font-size: 13px; color: var(--orange-dark); letter-spacing: .4px; }
+  .t-card .meta span { font-size: 14px; color: var(--grey); font-weight: 600; }
+
+  /* Bottom CTA band */
+  .cta-band { text-align: center; padding: 64px 0; }
+  .cta-band .lead { margin: 0 auto; }
+  .cta-band .actions { display: flex; gap: 16px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+
+  /* Contact (dark) */
+  .contact { background: var(--navy); color: #fff; border-bottom: 0; }
+  .contact .grid-bg::before {
+    background-image:
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  }
+  .contact .wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; position: relative; z-index: 1; }
+  .contact .eyebrow { color: var(--orange); }
+  .contact .h2 { color: #fff; }
+  .contact .lead { color: #bcccdc; }
+  .support { display: flex; flex-direction: column; gap: 24px; margin-top: 40px; }
+  .support .item { display: flex; gap: 16px; }
+  .support .dot { width: 24px; height: 24px; flex-shrink: 0; border-radius: 50%; background: rgba(242,140,40,.15); color: var(--orange); display: grid; place-items: center; font-size: 13px; font-weight: 800; }
+  .support h4 { font-size: 16px; margin-bottom: 4px; }
+  .support p { font-size: 14px; color: #9fb3c8; }
+  .direct { margin-top: 40px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 8px; padding: 21px; display: grid; gap: 12px; font-size: 15px; }
+  .direct .k { font-size: 12px; font-weight: 700; letter-spacing: 1px; color: #9fb3c8; text-transform: uppercase; }
+  .direct a:hover { color: var(--orange); }
+
+  .form-panel { background: #fff; color: var(--navy); border-radius: 8px; padding: 41px; box-shadow: 0 25px 50px -12px rgba(0,0,0,.4); }
+  .form-panel h3 { font-size: 26px; font-weight: 800; letter-spacing: -.4px; }
+  .form-panel .intro { color: var(--grey); font-size: 15px; margin: 8px 0 28px; }
+  form#enquiry { display: grid; gap: 24px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--navy-2); margin-bottom: 8px; }
+  .field label em { color: var(--orange-dark); font-style: normal; }
+  .field input {
+    width: 100%; height: 42px; border: 1px solid var(--line); border-radius: 6px; padding: 0 15px;
+    font-family: inherit; font-size: 15px; color: var(--navy); background: #fff; outline: none;
+  }
+  .field input::placeholder { color: #9fb3c8; }
+  .field input:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(242,140,40,.2); }
+  .field.invalid input { border-color: #c53030; }
+  .field .err { display: none; color: #c53030; font-size: 12px; margin-top: 4px; }
+  .field.invalid .err { display: block; }
+  .submit-row { display: flex; flex-direction: column; gap: 12px; }
+  .submit-row .btn { width: 100%; justify-content: center; }
+  .status { display: none; padding: 14px 16px; border-radius: 6px; font-size: 14px; font-weight: 600; }
+  .status.show { display: block; }
+  .status.ok { background: #f0fff4; color: var(--green); border: 1px solid #9ae6b4; }
+  .status.fail { background: #fff5f5; color: #c53030; border: 1px solid #feb2b2; }
+  .spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.5); border-top-color: #fff; border-radius: 50%; display: none; animation: spin .7s linear infinite; }
+  .btn.loading .spinner { display: inline-block; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .form-foot { font-size: 12px; color: var(--grey); text-align: center; }
+
+  /* Footer */
+  footer { background: var(--soft); border-top: 1px solid var(--line); padding: 64px 0 0; }
+  .f-cols { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1.2fr; gap: 32px; }
+  .f-brand p { font-size: 14px; color: var(--grey); margin-top: 16px; max-width: 274px; }
+  .socials { display: flex; gap: 8px; margin-top: 20px; }
+  .socials a { width: 32px; height: 32px; border-radius: 6px; border: 1px solid var(--line); background: #fff; display: grid; place-items: center; font-size: 13px; font-weight: 700; color: var(--navy); }
+  .socials a:hover { border-color: var(--navy); }
+  footer h4 { font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 16px; color: var(--navy); }
+  footer ul { list-style: none; display: grid; gap: 10px; }
+  footer ul a { font-size: 14px; color: var(--grey); }
+  footer ul a:hover { color: var(--navy); }
+  .f-contact li { display: flex; gap: 10px; font-size: 14px; color: var(--grey); }
+  .f-contact li b { color: var(--navy); min-width: 16px; }
+  .f-bottom { margin-top: 48px; border-top: 1px solid var(--line); padding: 24px 0; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: var(--grey); }
+  .f-bottom nav { display: flex; gap: 24px; }
+  .f-bottom a:hover { color: var(--navy); }
+
+  /* Responsive */
+  @media (max-width: 1100px) {
+    .hero h1 { font-size: 48px; }
+    .cards5, .projects, .testi { grid-template-columns: repeat(2, 1fr); }
+    .creds { grid-template-columns: repeat(2, 1fr); }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .contact .wrap, .leader { grid-template-columns: 1fr; }
+    .f-cols { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 860px) {
+    .menu-toggle { display: block; }
+    nav.main {
+      display: none; position: absolute; top: 80px; left: 0; right: 0; background: #fff; flex-direction: column;
+      padding: 12px 32px 20px; border-bottom: 1px solid var(--line); box-shadow: 0 12px 24px -8px rgba(16,42,67,.15);
+    }
+    nav.main.open { display: flex; }
+    header .cta-head { display: none; }
+    .hero .wrap > * { grid-column: 1 / -1 !important; }
+    .hero h1 { font-size: 40px; letter-spacing: -1px; }
+    .hero-visual { margin-top: 16px; }
+    .h2 { font-size: 32px; }
+    .pillars { grid-template-columns: 1fr; }
+    .row { grid-template-columns: 1fr; }
+    .leader .photo { height: 360px; }
+  }
+  @media (max-width: 600px) {
+    .wrap { padding: 0 20px; }
+    .section { padding: 56px 0; }
+    .hero { padding: 40px 0 56px; }
+    .hero h1 { font-size: 34px; }
+    .hero p.sub { font-size: 17px; }
+    .cards5, .projects, .testi, .creds, .stats { grid-template-columns: 1fr; }
+    .hero-frame { height: 380px; }
+    .hero-actions .btn { width: 100%; justify-content: center; }
+    .f-cols { grid-template-columns: 1fr; }
+    .form-panel { padding: 24px; }
+    .f-bottom nav { flex-wrap: wrap; gap: 12px; }
+    .cta-band .actions .btn { width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="RDR Construction home">
+      <div class="logo">R</div>
+      <div>
+        <div class="brand-name">RDR Construction</div>
+        <div class="brand-sub">Civil &amp; Govt Contractors</div>
+      </div>
+    </a>
+    <nav class="main" id="mainNav">
+      <a href="#about" class="active">About Us</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#feedback">Feedback</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="btn btn-primary cta-head">Get in Touch</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">&#9776;</button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero grid-bg section" style="border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="badge">1....ONE AND ONLY OPTION</div>
+      <h1>RDR  Constuct a Building Strong Foundations for a Better Tomorrow.</h1>
+      <p class="sub">From roads and public infrastructure to government buildings, we deliver construction solutions built around quality, careful planning, and dependable execution across Tamil Nadu.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Discuss Your Project &rarr;</a>
+        <a href="#projects" class="btn btn-outline">Explore Our Work</a>
+      </div>
+      <div class="trust">
+        <span aria-hidden="true">&#10003;</span>
+        <span>Quality Workmanship &middot; Responsible Project Management &middot; Commitment to Timely Delivery</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-frame">
+        <div class="ph"><span>Photo: Active highway and civil bridge construction site, Tamil Nadu</span></div>
+        <div class="hero-badge">
+          <div>
+            <div class="k">On-Site Execution</div>
+            <div class="v">State Highway &amp; Flyover Works</div>
+          </div>
+          <div class="loc">Tamil Nadu, India</div>
+        </div>
+      </div>
+      <div class="accent-tr"></div>
+      <div class="accent-bl"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="section" id="about" style="padding-top:64px">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><div class="ico">01</div><div class="num">00+</div><div class="bar"></div><div class="lbl">Statistic label</div></div>
+      <div class="stat"><div class="ico">02</div><div class="num">00+</div><div class="bar"></div><div class="lbl">Statistic label</div></div>
+      <div class="stat"><div class="ico">03</div><div class="num">00+</div><div class="bar"></div><div class="lbl">Statistic label</div></div>
+      <div class="stat"><div class="ico">04</div><div class="num">00+</div><div class="bar"></div><div class="lbl">Statistic label</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="section grid-bg" id="services">
+  <div class="wrap">
+    <div class="head-block">
+      <div class="eyebrow">What We Do</div>
+      <h2 class="h2">Construction Expertise. Practical Solutions.</h2>
+      <p class="lead">From initial planning to project execution, we bring a coordinated approach to civil construction and infrastructure development.</p>
+    </div>
+    <div class="cards5">
+      <article class="card">
+        <div class="ico-sq">RC</div>
+        <h3>Road Construction</h3>
+        <p>Road development and related civil works planned around project specifications, site conditions, and quality requirements.</p>
+        <div class="more">Learn more</div>
+      </article>
+      <article class="card">
+        <div class="ico-sq">GB</div>
+        <h3>Government Building Construction</h3>
+        <p>Construction of public buildings and institutional facilities in accordance with applicable project requirements and PWD guidelines.</p>
+        <div class="more">Learn more</div>
+      </article>
+      <article class="card">
+        <div class="ico-sq">CC</div>
+        <h3>Civil Construction</h3>
+        <p>Civil engineering and structural construction solutions tailored to the needs of each project, including reinforced masonry, foundations, and heavy structural works.</p>
+        <div class="more">Learn more</div>
+      </article>
+      <article class="card">
+        <div class="ico-sq">ID</div>
+        <h3>Infrastructure Development</h3>
+        <p>Infrastructure works focused on practical execution, drainage canal masonry, utility coordination, and long-term community usability.</p>
+        <div class="more">Learn more</div>
+      </article>
+      <article class="card">
+        <div class="ico-sq">PM</div>
+        <h3>Project Management</h3>
+        <p>Project coordination, progress monitoring, quality checks, and execution oversight to help keep construction work organized and on budget.</p>
+        <div class="more">Learn more</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEADERSHIP ============ -->
+<section class="section">
+  <div class="wrap leader">
+    <div class="photo">
+      <div class="ph"><span>Photo: RDR leadership and on-site road execution team, Panruti</span></div>
+    </div>
+    <div>
+      <div class="eyebrow">About Our Leadership &amp; Legacy</div>
+      <h2 class="h2">Discipline, Driven by Uncompromised Quality.</h2>
+      <p class="lead" style="margin-bottom:16px">Founded with a mission to deliver enduring civil infrastructure across Tamil Nadu, RDR Construction is led by experienced contractors with deep roots in ground-level execution, government tender standards, and modern civil engineering practices.</p>
+      <p class="lead">Unlike remote contracting firms, our leadership actively oversees on-site execution, material sourcing, structural integrity, and departmental compliance from day one to handover.</p>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="t"><i>1</i>On-Site Control</div>
+          <p>Direct on-site management ensuring zero compromise on mix designs, road compaction, and structural safety.</p>
+        </div>
+        <div class="pillar">
+          <div class="t"><i>2</i>Standards Compliance</div>
+          <p>Adherence to Tamil Nadu Highways, Rural Development, and Public Works Department quality benchmarks.</p>
+        </div>
+        <div class="pillar">
+          <div class="t"><i>3</i>Transparent Reporting</div>
+          <p>Streamlined BOQ costing, mechanized fleet deployment, and transparent milestone reporting.</p>
+        </div>
+      </div>
+      <div class="quote">
+        &ldquo;Our reputation is poured into every cubic metre of concrete and paved onto every kilometre of road. When you entrust us with a project, you get our personal commitment on site every day.&rdquo;
+        <div class="sig">&mdash; Founder, RDR Construction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="section grid-bg" id="projects">
+  <div class="wrap">
+    <div class="head-block">
+      <div class="eyebrow">Our Projects</div>
+      <h2 class="h2">Built Across Tamil Nadu</h2>
+      <p class="lead">A selection of road, institutional, and civil infrastructure works delivered on site.</p>
+    </div>
+    <div class="projects">
+      <article class="project">
+        <div class="thumb">
+          <div class="ph"><span>Photo: Highway road infrastructure, Tamil Nadu</span></div>
+          <div class="tag">Road Infrastructure</div>
+        </div>
+        <div class="body">
+          <div class="cat">Road Infrastructure</div>
+          <h3>Road Infrastructure</h3>
+          <p>Four-lane subgrade formation, culvert construction, and precision bituminous concrete paving designed for high axle-load transit.</p>
+          <div class="link">View Project <span>&rarr;</span></div>
+        </div>
+      </article>
+      <article class="project">
+        <div class="thumb">
+          <div class="ph"><span>Photo: Institutional government complex building</span></div>
+          <div class="tag">Institutional Building</div>
+        </div>
+        <div class="body">
+          <div class="cat">Institutional Building</div>
+          <h3>Community Center &amp; Anganwadi Infrastructure</h3>
+          <p>Construction, masonry, and exterior architectural finishing of rural community welfare building and institutional child development centre, adhering to rural development infrastructure standards.</p>
+          <div class="link">View Project <span>&rarr;</span></div>
+        </div>
+      </article>
+      <article class="project">
+        <div class="thumb">
+          <div class="ph"><span>Photo: Pier and storm water canal works</span></div>
+          <div class="tag">Civil Infrastructure</div>
+        </div>
+        <div class="body">
+          <div class="cat">Civil Infrastructure Works</div>
+          <h3>Civil Infrastructure Works</h3>
+          <p>Deep pile foundations, heavy pre-stressed concrete flyover piers, and reinforced stone masonry canal channelization for urban storm drainage.</p>
+          <div class="link">View Project <span>&rarr;</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CREDENTIALS ============ -->
+<section class="section" id="credentials">
+  <div class="wrap">
+    <div class="head-block">
+      <div class="eyebrow">Registrations &amp; Credentials</div>
+      <h2 class="h2">Credentials That Support Our Commitment.</h2>
+      <p class="lead">We believe trust begins with transparency. Explore our applicable business registrations, contractor licences, and certifications that demonstrate our qualifications for relevant construction work.</p>
+    </div>
+    <div class="creds">
+      <article class="cred">
+        <div class="top"><div class="ico-sq">GV</div><span class="pill">Government</span></div>
+        <h3>Contractor Registration</h3>
+        <p>Registered government contractor credentials for civil works tendering.</p>
+        <dl>
+          <div><dt>Category</dt><dd>Civil Works</dd></div>
+          <div><dt>Issued by</dt><dd>Govt. of Tamil Nadu</dd></div>
+        </dl>
+      </article>
+      <article class="cred">
+        <div class="top"><div class="ico-sq">BR</div><span class="pill">Statutory</span></div>
+        <h3>Business Registration</h3>
+        <p>Official statutory documentation identifying our registered business under the Ministry of Corporate Affairs / Registrar of Firms.</p>
+        <dl>
+          <div><dt>Authority</dt><dd>MCA / RoF</dd></div>
+          <div><dt>Status</dt><dd>Active</dd></div>
+        </dl>
+      </article>
+      <article class="cred">
+        <div class="top"><div class="ico-sq">GS</div><span class="pill">Tax</span></div>
+        <h3>GST Registration</h3>
+        <p>Our valid Goods and Services Tax registration details demonstrating full commercial and fiscal compliance for billing.</p>
+        <dl>
+          <div><dt>Regime</dt><dd>GST</dd></div>
+          <div><dt>Status</dt><dd>Active</dd></div>
+        </dl>
+      </article>
+      <article class="cred">
+        <div class="top"><div class="ico-sq">QC</div><span class="pill">Quality</span></div>
+        <h3>Quality Certifications</h3>
+        <p>Applicable quality management and occupational safety standards adhered to on site across civil works.</p>
+        <dl>
+          <div><dt>Scope</dt><dd>Civil Works</dd></div>
+          <div><dt>Standard</dt><dd>QMS / OHS</dd></div>
+        </dl>
+      </article>
+    </div>
+    <div class="note">
+      <span aria-hidden="true">&#9888;</span>
+      <span><strong>Statutory Note:</strong> Registration numbers and certificate copies are available on request for tender and verification purposes.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section grid-bg" id="feedback">
+  <div class="wrap">
+    <div class="head-block" style="margin-left:auto;margin-right:auto;text-align:center">
+      <div class="eyebrow">Client Feedback</div>
+      <h2 class="h2">What Our Partners Say</h2>
+      <p class="lead" style="margin:0 auto">Feedback from government and institutional clients on our on-site execution and communication.</p>
+    </div>
+    <div class="testi">
+      <article class="t-card">
+        <div class="thumb">
+          <div class="ph"><span>Photo: SH 68 Panruti on-site execution</span></div>
+          <div class="cap">SH 68 Panruti On-Site Execution</div>
+        </div>
+        <blockquote>&ldquo;From the initial discussion to the execution of the work, the team maintained clear communication and paid attention to the project requirements. The overall experience was professional.&rdquo;</blockquote>
+        <div class="meta"><b>[GOVT.1]</b><span>SH 68 Panruti &mdash; Drainage &amp; Road Works</span></div>
+      </article>
+      <article class="t-card">
+        <div class="thumb">
+          <div class="ph"><span>Photo: On-site interlocking paver road work</span></div>
+          <div class="cap">On-Site Interlocking Paver &amp; Road Construction Work</div>
+        </div>
+        <blockquote>&ldquo;The team approached the work with proper planning and a clear understanding of the requirements. We appreciated their coordination throughout the project.&rdquo;</blockquote>
+        <div class="meta"><b>[GOVT.2]</b><span>Link Road / Paver Block Road Works</span></div>
+      </article>
+      <article class="t-card">
+        <div class="thumb">
+          <div class="ph"><span>Photo: Concrete surface finishing on site</span></div>
+          <div class="cap">Concrete Surface Finishing On-Site Work</div>
+        </div>
+        <blockquote>&ldquo;What stood out was the team's focus on coordination and keeping us informed about the progress of the work. It made the process easier to manage.&rdquo;</blockquote>
+        <div class="meta"><b>[GOVT.3]</b><span>Andikuppam bridge &mdash; Canal &amp; Drainage Works</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT (dark) + FORM ============ -->
+<section class="section contact grid-bg" id="contact">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Let's Discuss Your Project</div>
+      <h2 class="h2">Have a Project in Mind? Let's Build It Together.</h2>
+      <p class="lead">Every successful project starts with a conversation. Tell us about your construction requirements, and our team will get in touch to understand your needs and discuss the next steps.</p>
+      <div class="support">
+        <div class="item"><div class="dot">1</div><div><h4>Engineering Consultation</h4><p>Scope review with our site engineers before any commitment.</p></div></div>
+        <div class="item"><div class="dot">2</div><div><h4>Tender Support</h4><p>Help with government tender documentation and BOQ costing.</p></div></div>
+        <div class="item"><div class="dot">3</div><div><h4>Site Planning</h4><p>Practical planning around site conditions and timelines.</p></div></div>
+      </div>
+      <div class="direct">
+        <div class="k">Head Office &amp; Tender Desk</div>
+        <div>Phone: <a href="tel:+910000000000">+91 00000 00000</a></div>
+        <div>Email: <a href="mailto:info@example.com">info@example.com</a></div>
+        <div>Location: Tamil Nadu, India</div>
+      </div>
+    </div>
+
+    <div class="form-panel" id="formPanel">
+      <h3>Tell Us About Your Project</h3>
+      <p class="intro">Fill in your details below and we will reach out to schedule an engineering consultation.</p>
+
+      <form id="enquiry" novalidate>
+        <div class="row">
+          <div class="field" id="fieldName">
+            <label for="name">Full Name <em>*</em></label>
+            <input id="name" name="name" type="text" placeholder="e.g. S. Ramanathan" autocomplete="name">
+            <div class="err">Please enter your name.</div>
+          </div>
+          <div class="field" id="fieldPhone">
+            <label for="phone">Phone Number <em>*</em></label>
+            <input id="phone" name="phone" type="tel" placeholder="+91 98XXX XXXXX" autocomplete="tel">
+            <div class="err">Please enter a phone number.</div>
+          </div>
+        </div>
+
+        <div class="field" id="fieldEmail">
+          <label for="email">Email Address (Optional)</label>
+          <input id="email" name="email" type="email" placeholder="name@organization.com" autocomplete="email">
+          <div class="err">Please enter a valid email address.</div>
+        </div>
+
+        <div class="submit-row">
+          <div class="status" id="status" role="status"></div>
+          <button type="submit" class="btn btn-primary" id="submitBtn">
+            <span class="spinner" aria-hidden="true"></span>
+            <span id="btnText">Submit Enquiry</span>
+            <span aria-hidden="true">&rarr;</span>
+          </button>
+          <div class="form-foot">Your details are used only to respond to your enquiry.</div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING CTA ============ -->
+<section class="cta-band">
+  <div class="wrap">
+    <h2 class="h2">Ready to Start Your Project?</h2>
+    <p class="lead">Talk to our team about roads, buildings, and infrastructure works across Tamil Nadu.</p>
+    <div class="actions">
+      <a href="#contact" class="btn btn-primary">Discuss Your Project &rarr;</a>
+      <a href="#projects" class="btn btn-outline">Explore Our Work</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="f-cols">
+      <div class="f-brand">
+        <div class="brand">
+          <div class="logo">R</div>
+          <div>
+            <div class="brand-name">RDR Construction</div>
+            <div class="brand-sub">Civil &amp; Govt Contractors</div>
+          </div>
+        </div>
+        <p>We provide construction and project management services for civil works, roads, buildings, and infrastructure projects, with a focus on quality, planning, and dependable execution.</p>
+        <div class="socials">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="mailto:info@example.com" aria-label="Email">@</a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#top">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#credentials">Credentials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#services">Civil Construction</a></li>
+          <li><a href="#services">Road Construction</a></li>
+          <li><a href="#services">Building Construction</a></li>
+          <li><a href="#services">Infrastructure Works</a></li>
+          <li><a href="#services">Project Management</a></li>
+        </ul>
+      </div>
+      <div class="f-contact">
+        <h4>Get in Touch</h4>
+        <ul>
+          <li><b>&#9742;</b> <a href="tel:+910000000000">+91 00000 00000</a></li>
+          <li><b>&#9993;</b> <a href="mailto:info@example.com">info@example.com</a></li>
+          <li><b>&#9906;</b> <span>Tamil Nadu, India</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>&copy; <span id="year"></span> RDR Construction. All rights reserved.</span>
+      <nav>
+        <a href="#">Terms of Use</a>
+        <a href="#">Licence Disclosures</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- Mobile nav toggle ----
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.getElementById('mainNav');
+  menuToggle.addEventListener('click', () => mainNav.classList.toggle('open'));
+  mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mainNav.classList.remove('open')));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---- Enquiry form -> Google Sheets via Apps Script ----
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz0vmksnx_j8HRFbiQ-hFqYZaVrbUD1Bf-9d5gMH1_ASrSvQXMVy0osntQCtGtqPoOcuw/exec";
+
+  const form = document.getElementById('enquiry');
+  const submitBtn = document.getElementById('submitBtn');
+  const btnText = document.getElementById('btnText');
+  const statusBox = document.getElementById('status');
+
+  function setField(id, valid) {
+    document.getElementById(id).classList.toggle('invalid', !valid);
+  }
+
+  function setLoading(on) {
+    submitBtn.disabled = on;
+    submitBtn.classList.toggle('loading', on);
+    btnText.textContent = on ? 'Sending...' : 'Submit Enquiry';
+  }
+
+  function showStatus(type, message) {
+    statusBox.className = 'status show ' + type;
+    statusBox.textContent = message;
+  }
+
+  function showSuccess() {
+    setLoading(false);
+    form.reset();
+    showStatus('ok', 'Thank you! Your enquiry has been received. Our team will contact you shortly.');
+  }
+
+  function showError() {
+    setLoading(false);
+    showStatus('fail', 'Sorry, we could not send your enquiry. Please check your connection and try again.');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+
+    const nameOk = name.length > 0;
+    const phoneOk = phone.length > 0;
+    const emailOk = email === '' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    setField('fieldName', nameOk);
+    setField('fieldPhone', phoneOk);
+    setField('fieldEmail', emailOk);
+
+    if (!nameOk || !phoneOk || !emailOk) {
+      showStatus('fail', 'Please correct the highlighted fields.');
+      return;
+    }
+
+    statusBox.className = 'status';
+    setLoading(true);
+
+    const url = SCRIPT_URL + "?" + new URLSearchParams({ name, email, phone });
+
+    fetch(url, { method: "GET", mode: "no-cors" })
+      .then(() => showSuccess())
+      .catch(() => showError());
+  });
+</script>
+
+</body>
+</html>
